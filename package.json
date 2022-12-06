@@ -1,0 +1,27 @@
+{
+  "name": "@thzero/library_client_firebase_vue",
+  "version": "0.16.6",
+  "version_major": 0,
+  "version_minor": 16,
+  "version_patch": 6,
+  "version_date": "11/25/2022",
+  "author": "thZero",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thzero/library_client_firebase_vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thzero/library_client_firebase_vue/issues"
+  },
+  "homepage": "https://github.com/thzero/library_client_firebase_vue#readme",
+  "scripts": {
+    "cli-update": "library-cli --updateversion --pi",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "@thzero/library_client": "^0.16",
+    "@thzero/library_client_firebase": "^0.16",
+    "@thzero/library_common": "^0.16"
+  }
+}
