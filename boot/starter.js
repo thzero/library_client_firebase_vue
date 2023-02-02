@@ -1,6 +1,6 @@
 import LibraryClientConstants from '@thzero/library_client/constants';
 
-import LibraryClientUtility from '@thzero/library_client/utility/global';
+import LibraryClientUtility from '@thzero/library_client/utility/index';
 
 import starter from '@thzero/library_client_firebase/boot/starter';
 
