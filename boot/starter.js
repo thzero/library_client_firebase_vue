@@ -1,6 +1,6 @@
-import LibraryConstants from '@thzero/library_client/constants';
+import LibraryClientConstants from '@thzero/library_client/constants';
 
-import GlobalUtility from '@thzero/library_client/utility/global';
+import LibraryClientUtility from '@thzero/library_client/utility/index';
 
 import starter from '@thzero/library_client_firebase/boot/starter';
 
@@ -10,19 +10,19 @@ export default ({
 }) => {
 	return starter(() => {
 		router.beforeResolve((to, from, next) => {
-			const auth = GlobalUtility.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_AUTH);
-			const logger = GlobalUtility.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_LOGGER);
+			const auth = LibraryClientUtility.$injector.getService(LibraryClientConstants.InjectorKeys.SERVICE_AUTH);
+			const logger = LibraryClientUtility.$injector.getService(LibraryClientConstants.InjectorKeys.SERVICE_LOGGER);
 			logger.debug('router.beforeResolve', to);
 			if (to.matched.some(record => record.meta.requiresAuth)) {
 				const isLoggedIn = auth.isAuthenticated;
 				if (!isLoggedIn) {
-					// GlobalUtility.$EventBus.on('auth-refresh', (user) => {
+					// LibraryClientUtility.$EventBus.on('auth-refresh', (user) => {
 					//	 logger.debug('auth-refresh', user)
 					//	 next()
 					// })
 					// return
-					GlobalUtility.$navRouter.push('/', null, () => {
-						// GlobalUtility.$navRouter.push('/')
+					LibraryClientUtility.$navRouter.push('/', null, () => {
+						// LibraryClientUtility.$navRouter.push('/')
 						// window.location.href = '/'
 					});
 					return;
@@ -34,22 +34,22 @@ export default ({
 				//	 auth.isAuthenticated().then(async (data) => {
 				//		 logger.debug('router.beforeResolve.matched')
 	
-				//		 //const isLoggedIn = GlobalUtility.$store.state.user.isLoggedIn
+				//		 //const isLoggedIn = LibraryClientUtility.$store.state.user.isLoggedIn
 				//		 const isLoggedIn = await auth.isAuthenticated()
 				//		 if (!isLoggedIn) {
-				//			 GlobalUtility.$EventBus.on('auth-refresh', (user) => {
+				//			 LibraryClientUtility.$EventBus.on('auth-refresh', (user) => {
 				//				 logger.debug('auth-refresh', user)
 				//				 next()
 				//			 })
 				//			 return
 				//		 }
 	
-				//		 // if (GlobalUtility.$store.state.user.token) {
+				//		 // if (LibraryClientUtility.$store.state.user.token) {
 				//		 //	 next()
 				//		 //	 return
 				//		 // }
 	
-				//		 // GlobalUtility.$EventBus.on('auth-refresh', (user) => {
+				//		 // LibraryClientUtility.$EventBus.on('auth-refresh', (user) => {
 				//		 //	 logger.debug('auth-refresh', user)
 				//		 //	 next()
 				//		 // })
