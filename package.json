@@ -1,10 +1,10 @@
 {
   "name": "@thzero/library_client_firebase_vue",
-  "version": "0.17.1",
+  "version": "0.17.2",
   "version_major": 0,
   "version_minor": 17,
-  "version_patch": 1,
-  "version_date": "02/02/2023",
+  "version_patch": 2,
+  "version_date": "02/03/2023",
   "author": "thZero",
   "license": "MIT",
   "repository": {
@@ -20,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@thzero/library_client_firebase": "^0.16"
+    "@thzero/library_client_firebase": "^0.17"
   },
   "peerDependencies": {
     "@thzero/library_client": "^0.17",
