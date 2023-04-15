@@ -25,13 +25,30 @@ export default ({
 			serviceLogger.debug('router.beforeResolve', to);
 			if (to.matched.some(record => record.meta.requiresAuth)) {
 				let isLoggedIn = serviceAuth.isAuthenticated;
-				if (isLoggedIn) {
+				console.log("authorization.isLoggedInA", isLoggedIn);
+				console.log("authorization.isLoggedInA", isLoggedIn);
+				console.log("authorization.isLoggedInA", isLoggedIn);
+				console.log("authorization.isLoggedInA", isLoggedIn);
+				if (!isLoggedIn) {
 					// Briefly wait for authentication to settle...
 					await sleep(150);
 					const isLoggedIn2 = serviceAuth.isAuthenticated;
+					console.log("authorization.isLoggedIn2", isLoggedIn2);
+					console.log("authorization.isLoggedIn2", isLoggedIn2);
+					console.log("authorization.isLoggedIn2", isLoggedIn2);
+					console.log("authorization.isLoggedIn2", isLoggedIn2);
 					isLoggedIn = isLoggedIn2;
 				}
+				console.log("authorization.isLoggedInB", isLoggedIn);
+				console.log("authorization.isLoggedInB", isLoggedIn);
+				console.log("authorization.isLoggedInB", isLoggedIn);
+				console.log("authorization.isLoggedInB", isLoggedIn);
 				if (!isLoggedIn) {
+					console.log("authorization.isLoggedInB - failed");
+					console.log("authorization.isLoggedInB - failed");
+					console.log("authorization.isLoggedInB - failed");
+					console.log("authorization.isLoggedInB - failed");
+					console.log("authorization.isLoggedInB - failed");
 					// LibraryClientUtility.$EventBus.on('auth-refresh', (user) => {
 					//	 serviceLogger.debug('auth-refresh', user)
 					//	 next()
@@ -47,13 +64,36 @@ export default ({
 				const user = serviceStore.user;
 				let success = true;
 				const record = to.matched.find(record => record.meta.requiresAuth);
+				console.log("authorization.record", record);
+				console.log("authorization.record", record);
 				if (record && record.meta) {
+					console.log("authorization.record.meta", record.meta);
+					console.log("authorization.record.meta", record.meta);
 					const roles = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthRoles)) ? record.meta.requiresAuthRoles : [];
+					console.log("authorization.roles", roles);
+					console.log("authorization.roles", roles);
+					console.log("authorization.roles", roles);
+					console.log("authorization.roles", roles);
+					console.log("authorization.roles", roles);
 					success = await serviceSecurity.authorizationCheckRoles(correlationId, user, roles, record.meta.requiresAuthLogical);
+					console.log("authorization.success", success);
+					console.log("authorization.success", success);
+					console.log("authorization.success", success);
+					console.log("authorization.success", success);
+					console.log("authorization.success", success);
 				}
 
 				serviceLogger.debug('middleware', 'authorization', 'success', null, success, correlationId);
+				console.log("authorization.success", success);
+				console.log("authorization.success", success);
+				console.log("authorization.success", success);
+				console.log("authorization.success", success);
 				if (!success) {
+					console.log("authorization.isLoggedInC - failed role");
+					console.log("authorization.isLoggedInC - failed role");
+					console.log("authorization.isLoggedInC - failed role");
+					console.log("authorization.isLoggedInC - failed role");
+					console.log("authorization.isLoggedInC - failed role");
 					LibraryClientUtility.$navRouter.push('/', null, () => {
 						// LibraryClientUtility.$navRouter.push('/')
 						// window.location.href = '/'
@@ -61,6 +101,11 @@ export default ({
 					return;
 				}
 
+				console.log("authorization.isLoggedInC - success");
+				console.log("authorization.isLoggedInC - success");
+				console.log("authorization.isLoggedInC - success");
+				console.log("authorization.isLoggedInC - success");
+				console.log("authorization.isLoggedInC - success");
 				next();
 
 				// eslint-disable-next-line no-unused-vars
