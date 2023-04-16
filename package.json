@@ -1,9 +1,9 @@
 {
   "name": "@thzero/library_client_firebase_vue",
-  "version": "0.17.3",
+  "version": "0.17.4",
   "version_major": 0,
   "version_minor": 17,
-  "version_patch": 3,
+  "version_patch": 4,
   "version_date": "04/15/2023",
   "author": "thZero",
   "license": "MIT",
