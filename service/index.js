@@ -44,8 +44,8 @@ class VueFirebaseAuthService extends FirebaseAuthService {
 		next();
 	}
 
-	async initialize(router) {
-		const response = super.initialize(router);
+	initialize(correlationId, router) {
+		const response = super.initialize(correlationId, router);
 
 		router.beforeResolve(async (to, from, next) => {
 			const serviceAuth = LibraryClientUtility.$injector.getService(LibraryClientConstants.InjectorKeys.SERVICE_AUTH);
