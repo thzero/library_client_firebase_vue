@@ -1,5 +1,6 @@
 import LibraryClientConstants from '@thzero/library_client/constants';
 
+import LibraryClientUtility from '@thzero/library_client/utility/index';
 import LibraryCommonUtility from '@thzero/library_common/utility';
 
 import FirebaseAuthService from '@thzero/library_client_firebase/service/index';
@@ -7,7 +8,7 @@ import FirebaseAuthService from '@thzero/library_client_firebase/service/index';
 class VueFirebaseAuthService extends FirebaseAuthService {
 	async beforeResolve(to, from, next) {
 		const correlationId = LibraryCommonUtility.correlationId();
-		this._serviceLogger.debug('VueFirebaseAuthService', 'router.beforeResolve', null, to, correlationId);
+		this._logger.debug('VueFirebaseAuthService', 'router.beforeResolve', null, to, correlationId);
 		if (!to.matched.some(record => record.meta.requiresAuth)) {
 			next();
 			return;
