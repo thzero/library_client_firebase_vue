@@ -21,16 +21,16 @@ class VueFirebaseAuthService extends FirebaseAuthService {
 		if (record && record.meta) {
 			console.log('authorization.record.meta', record.meta);
 			requiresAuthRoles = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthRoles)) ? record.meta.requiresAuthRoles : [];
-			this._serviceLogger.info2('authorization.roles', requiresAuthRoles);
+			this._logger.info2('authorization.roles', requiresAuthRoles);
 			console.log('authorization.roles', requiresAuthRoles);
 			requiresAuthLogical = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthLogical)) ? record.meta.requiresAuthLogical : null;
-			this._serviceLogger.info2('authorization.logical', requiresAuthLogical);
+			this._logger.info2('authorization.logical', requiresAuthLogical);
 			console.log('authorization.logical', requiresAuthLogical);
 		}
 
 		// const serviceAuth = LibraryClientUtility.$injector.getService(LibraryClientConstants.InjectorKeys.SERVICE_AUTH);
 		const result = await this.resolveAuthorization(correlationId, requiresAuthRoles, requiresAuthLogical);
-		this._serviceLogger.info2('authorization.result', result);
+		this._logger.info2('authorization.result', result);
 		console.log('authorization.result', result);
 		if (!result) {
 			LibraryClientUtility.$navRouter.push('/', null, () => {
@@ -40,7 +40,7 @@ class VueFirebaseAuthService extends FirebaseAuthService {
 			return;
 		}
 
-		this._serviceLogger.info2('authorization - success');
+		this._logger.info2('authorization - success');
 		console.log('authorization - success');
 		next();
 	}
