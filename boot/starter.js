@@ -9,13 +9,11 @@ import starter from '@thzero/library_client_firebase/boot/starter';
 export default async ({router}) => {
 	const serviceLogger = LibraryClientUtility.$injector.getService(LibraryClientConstants.InjectorKeys.SERVICE_LOGGER);
 
-    router.beforeResolve(async (to, from, next) => {
+    router.beforeResolve(async (to, from) => {
         const correlationId = LibraryCommonUtility.correlationId();
         serviceLogger.debug('middleware', 'router.beforeResolve', null, to, correlationId);
-        if (!to.matched.some(record => record.meta.requiresAuth)) {
-            next();
+        if (!to.matched.some(record => record.meta.requiresAuth))
             return;
-        }
 
         const record = to.matched.find(record => record.meta.requiresAuth);
         let requiresAuthRoles = [];
@@ -47,7 +45,6 @@ export default async ({router}) => {
 
         serviceLogger.info2('authorization - success');
         // console.log('authorization - success');
-        next();
     });
 
 	return await starter(router);
