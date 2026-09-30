@@ -23,7 +23,7 @@ class VueFirebaseAuthService extends FirebaseAuthService {
 			requiresAuthRoles = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthRoles)) ? record.meta.requiresAuthRoles : [];
 			this._logger.info2('authorization.roles', requiresAuthRoles);
 			console.log('authorization.roles', requiresAuthRoles);
-			requiresAuthLogical = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthLogical)) ? record.meta.requiresAuthLogical : null;
+			requiresAuthLogical = (record.meta.requiresAuthRoles && !String.isNullOrEmpty(record.meta.requiresAuthLogical)) ? record.meta.requiresAuthLogical : null;
 			this._logger.info2('authorization.logical', requiresAuthLogical);
 			console.log('authorization.logical', requiresAuthLogical);
 		}
