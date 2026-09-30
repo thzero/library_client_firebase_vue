@@ -1,5 +1,6 @@
 {
   "name": "@thzero/library_client_firebase_vue",
+  "type": "module",
   "version": "0.18.9",
   "version_major": 0,
   "version_minor": 18,
