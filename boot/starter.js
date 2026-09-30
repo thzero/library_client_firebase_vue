@@ -47,5 +47,5 @@ export default async ({router}) => {
         // console.log('authorization - success');
     });
 
-	return await starter(router);
+	return await starter({ router });
 }
