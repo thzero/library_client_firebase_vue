@@ -55,12 +55,20 @@ jobs:
     - name: Node Dependencies
       if: ((github.event.client_payload.action == 'npm' && steps.ncu-upgrade.outputs.upgraded == true) || github.event.action == 'version')
       run: |
-        npm install --no-package-lock
+        # --force: until @thzero/library_client_firebase is republished with library_common ^0.19
+        npm install --no-package-lock --force
     - name: Update Package Version
       if: ((github.event.client_payload.action == 'npm' && steps.ncu-upgrade.outputs.upgraded == true) || github.event.action == 'version')
       run: |
         # npm run cli-update -- --silent
         library-cli --updateversion --pi --silent
+    - name: Node Dependencies for Tests
+      run: |
+        # --force: until @thzero/library_client_firebase is republished with library_common ^0.19
+        npm install --no-package-lock --force
+    - name: Test
+      run: |
+        npm test
     - name: Git Check
       id: git-changes
       if: success()

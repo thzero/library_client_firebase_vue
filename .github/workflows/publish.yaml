@@ -38,7 +38,11 @@ jobs:
         npm install -g @thzero/library_cli
     - name: Node Dependencies
       run: |
-        npm install --no-package-lock
+        # --force: until @thzero/library_client_firebase is republished with library_common ^0.19
+        npm install --no-package-lock --force
+    - name: Test
+      run: |
+        npm test
     - name: Package Output
       run: |
         cat package.json
