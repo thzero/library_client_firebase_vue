@@ -23,13 +23,6 @@ export default () => {
         },
         {
             category: 'client',
-            name: '@thzero/library_client_vue3',
-            url: 'https://github.com/thzero/library_client_vue3',
-            licenseName: 'MIT',
-            licenseUrl: 'https://github.com/thzero/library_client_vue3/blob/master/license.md'
-        },
-        {
-            category: 'client',
             name: '@thzero/library_common',
             url: 'https://github.com/thzero/library_common',
             licenseName: 'MIT',
