@@ -26,7 +26,7 @@ export default async ({router}) => {
             requiresAuthRoles = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthRoles)) ? record.meta.requiresAuthRoles : [];
             // console.log('authorization.roles', requiresAuthRoles);
 			serviceLogger.debug('starter', 'beforeResolve', 'authorization.roles', requiresAuthRoles, correlationId);
-            requiresAuthLogical = (record.meta.requiresAuthRoles && Array.isArray(record.meta.requiresAuthLogical)) ? record.meta.requiresAuthLogical : null;
+            requiresAuthLogical = (record.meta.requiresAuthRoles && !String.isNullOrEmpty(record.meta.requiresAuthLogical)) ? record.meta.requiresAuthLogical : null;
             // console.log('authorization.logical', requiresAuthLogical);
 			serviceLogger.debug('starter', 'beforeResolve', 'authorization.logical', requiresAuthLogical, correlationId);
         }
@@ -47,5 +47,5 @@ export default async ({router}) => {
         // console.log('authorization - success');
     });
 
-	return await starter(router);
+	return await starter({ router });
 }
